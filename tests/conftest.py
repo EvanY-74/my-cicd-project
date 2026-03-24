@@ -8,9 +8,17 @@ def division_cases():
     return [(10, 2, 5.0), (9, 3, 3.0)]
 
 
+def create_test_db():
+    class DummyConn:
+        def close(self):
+            pass
+    return DummyConn()
+
+
 @pytest.fixture(scope="module")
 def db_connection():
     conn = create_test_db()
+
     yield conn      # test runs here
     conn.close()    # teardown
 
