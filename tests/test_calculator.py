@@ -2,6 +2,7 @@ import pytest
 from src.calculator import add, subtract, multiply, divide
 import requests
 
+
 # Basic unit tests — one assertion each
 def test_add():
     assert add(2, 3) == 5
@@ -18,6 +19,7 @@ def test_multiply():
 def test_divide():
     assert divide(10, 2) == 5.0
 
+
 # Test that an exception IS raised
 def test_divide_by_zero():
     with pytest.raises(ValueError):
@@ -31,13 +33,12 @@ def test_divide_by_zero():
     (-1,  1,   0),    # negative
     (100, -50, 50),   # large values
 ])
-
-
 def test_add_cases(a, b, expected):
     assert add(a, b) == expected
 
 
 WEATHER_URL = "https://openweathermap.org/api"
+
 
 @pytest.mark.external
 @pytest.mark.slow
